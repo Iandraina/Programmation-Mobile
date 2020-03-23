@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SportAPP</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_match">matchActivity</string>
+    <string name="title_activity_accueil_match">AccueilMatch</string>
+    <string name="title_activity_information">Information</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_photo">Photo</string>
+</resources>
