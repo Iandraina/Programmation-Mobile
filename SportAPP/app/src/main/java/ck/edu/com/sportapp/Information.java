@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class Information extends AppCompatActivity {
 
-    TextView text;
+    TextView text1, text2;
     Button location,photo;
 
     @Override
@@ -48,19 +48,23 @@ public class Information extends AppCompatActivity {
                 location();
             }
         });
-        //text = (TextView) findViewById(R.id.textView3);
+        text1 = (TextView) findViewById(R.id.team1name);
+        text2 = (TextView) findViewById(R.id.team2name);
 
-        //if(savedInstanceState == null) {
-        //  Bundle extras =getIntent().getExtras();
-        //  if(extras == null) {
-        //      text.setText("nothing to say");
-        //  }
-        //  else {
-        //      text.setText(extras.getString("team1"));
-        //  }
-        //} else{
-        //  text.setText((String)savedInstanceState.getSerializable("team1"));
-        //}
+        if(savedInstanceState == null) {
+          Bundle extras =getIntent().getExtras();
+          if(extras == null) {
+              text1.setText("");
+              text2.setText("");
+          }
+          else {
+              text1.setText(extras.getString("team1"));
+              text2.setText(extras.getString("team2"));
+          }
+        } else{
+            text1.setText((String)savedInstanceState.getSerializable("team1"));
+            text2.setText((String)savedInstanceState.getSerializable("team2"));
+        }
     }
 
     public void location() {
