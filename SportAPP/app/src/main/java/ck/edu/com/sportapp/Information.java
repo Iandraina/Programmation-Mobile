@@ -24,7 +24,7 @@ public class Information extends AppCompatActivity {
     int cptF2 = 0;
     TextView text1, text2;
     Button location,photo;
-    EditText editAssist1, editAssist2, editRebound1, editRebound2, editFault1, editFault2;
+    EditText editAssist1, editAssist2, editRebound1, editRebound2, editFault1, editFault2, score1, score2;
     Button btnAP1, btnAP2,btnAM1, btnAM2, btnRP1, btnRP2, btnRM1, btnRM2, btnFP1, btnFP2, btnFM1, btnFM2;
 
     @Override
@@ -59,6 +59,8 @@ public class Information extends AppCompatActivity {
         });
         text1 = (TextView) findViewById(R.id.team1name);
         text2 = (TextView) findViewById(R.id.team2name);
+        score1 = (EditText) findViewById(R.id.textView7);
+        score2 = (EditText) findViewById(R.id.textView8);
 
         if(savedInstanceState == null) {
           Bundle extras =getIntent().getExtras();
