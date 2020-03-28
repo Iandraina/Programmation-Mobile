@@ -96,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 listItem.add("Assist : "+cursor.getString(3)+"\n");
                 listItem.add("Fault : "+cursor.getString(4)+"\n");
                 listItem.add("Rebound : "+cursor.getString(5)+"\n");
+                listItem.add("\n");
+                listItem.add("----------------------------------------------\n");
+                listItem.add("\n");
             }
 
             popUpStat("Data", listItem.toString());

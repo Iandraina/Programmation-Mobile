@@ -3,6 +3,7 @@ package ck.edu.com.sportapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -32,7 +33,8 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String DROP_TABLE = "DROP TABLE "+TABLE_NAME;
+        String DROP_TABLE = " DROP TABLE IF EXISTS "+TABLE_NAME;
+        db.execSQL(DROP_TABLE);
         onCreate(db);
     }
 
@@ -56,5 +58,14 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor queryRES = db.rawQuery("SELECT * FROM "+TABLE_NAME,null);
         return queryRES;
+    }
+
+    public int countElement() {
+        int cpt;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT COUNT(*) FROM " +TABLE_NAME;
+        cpt = (int) DatabaseUtils.longForQuery(db,query,null);
+        db.close();
+        return cpt;
     }
 }
