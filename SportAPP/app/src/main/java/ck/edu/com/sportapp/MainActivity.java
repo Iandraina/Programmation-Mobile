@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     Database myDB;
     Button stats, match;
-    ArrayList<String> listItem;
-    ArrayAdapter adapter;
+    StringBuffer stringBuffer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         match = (Button) findViewById(R.id.newMatch);
         stats = (Button) findViewById(R.id.stat);
         myDB = new Database(this);
-        listItem = new ArrayList<>();
+        stringBuffer = new StringBuffer();
 
         match.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,17 +90,17 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "No data to show!", Toast.LENGTH_SHORT).show();
         } else{
             while (cursor.moveToNext()) {
-                listItem.add("Teams : "+cursor.getString(1)+"\n");
-                listItem.add("Score : "+cursor.getString(2)+"\n");
-                listItem.add("Assist : "+cursor.getString(3)+"\n");
-                listItem.add("Fault : "+cursor.getString(4)+"\n");
-                listItem.add("Rebound : "+cursor.getString(5)+"\n");
-                listItem.add("\n");
-                listItem.add("----------------------------------------------\n");
-                listItem.add("\n");
+                stringBuffer.append("Teams : "+cursor.getString(1)+"\n");
+                stringBuffer.append("Score : "+cursor.getString(2)+"\n");
+                stringBuffer.append("Assist : "+cursor.getString(3)+"\n");
+                stringBuffer.append("Fault : "+cursor.getString(4)+"\n");
+                stringBuffer.append("Rebound : "+cursor.getString(5)+"\n");
+                stringBuffer.append("\n");
+                stringBuffer.append("----------------------------------------------\n");
+                stringBuffer.append("\n");
             }
 
-            popUpStat("Data", listItem.toString());
+            popUpStat("Registered matches data", stringBuffer.toString());
         }
     }
 

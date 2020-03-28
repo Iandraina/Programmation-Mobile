@@ -177,11 +177,11 @@ public class Information extends AppCompatActivity {
     }
 
     public void saveData(View view){
-        String teams = text1.getText().toString()+ " VS "+ text2.getText().toString();
-        String score = score1.getText().toString()+ " | "+ score2.getText().toString();
-        String assist = editAssist1.getText().toString()+" | "+editAssist2.getText().toString();
-        String fault = editFault1.getText().toString()+" | "+editFault2.getText().toString();
-        String rebound = editRebound1.getText().toString()+" | "+editRebound2.getText().toString();
+        String teams = text1.getText().toString()+ "   VS   "+ text2.getText().toString();
+        String score = score1.getText().toString()+ "   |   "+ score2.getText().toString();
+        String assist = editAssist1.getText().toString()+"   |   "+editAssist2.getText().toString();
+        String fault = editFault1.getText().toString()+"   |   "+editFault2.getText().toString();
+        String rebound = editRebound1.getText().toString()+"   |   "+editRebound2.getText().toString();
 
         System.out.println(myDB.countElement());
         if(myDB.countElement() < 5) {
