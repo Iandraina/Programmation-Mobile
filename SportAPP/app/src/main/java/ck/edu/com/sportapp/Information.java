@@ -183,13 +183,14 @@ public class Information extends AppCompatActivity {
         String fault = editFault1.getText().toString()+" | "+editFault2.getText().toString();
         String rebound = editRebound1.getText().toString()+" | "+editRebound2.getText().toString();
 
-        if(myDB.countElement()<= 5) {
+        System.out.println(myDB.countElement());
+        if(myDB.countElement() < 5) {
             if(myDB.insertData(teams, score, assist,fault,rebound) == true){
                 Toast.makeText(Information.this, "Data inserted successfully!",Toast.LENGTH_LONG).show();
             } else
                 Toast.makeText(Information.this, "Data insertion failed!",Toast.LENGTH_LONG).show();
         } else
-            Toast.makeText(Information.this, "No more space available!",Toast.LENGTH_LONG).show();
+            Toast.makeText(Information.this, "No more local space available!",Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
