@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="POINTS"
+                    android:text="FINAL POINTS"
                     android:textSize="30dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -355,20 +355,43 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Location" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/photo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/btnsave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="saveData"
+                android:text="Save" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Take a photo" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/photo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Take a photo" />
+
+            <Button
+                android:id="@+id/location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Location" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

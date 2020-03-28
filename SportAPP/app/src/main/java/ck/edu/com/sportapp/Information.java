@@ -13,9 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Information extends AppCompatActivity {
-
+    Database myDB;
     int cptA1 = 0;
     int cptA2 = 0;
     int cptR1 = 0;
@@ -25,7 +26,7 @@ public class Information extends AppCompatActivity {
     TextView text1, text2;
     Button location,photo;
     EditText editAssist1, editAssist2, editRebound1, editRebound2, editFault1, editFault2, score1, score2;
-    Button btnAP1, btnAP2,btnAM1, btnAM2, btnRP1, btnRP2, btnRM1, btnRM2, btnFP1, btnFP2, btnFM1, btnFM2;
+    Button btnAP1, btnAP2,btnAM1, btnAM2, btnRP1, btnRP2, btnRM1, btnRM2, btnFP1, btnFP2, btnFM1, btnFM2, saveD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class Information extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        myDB = new Database(this);
         photo = (Button) findViewById(R.id.photo);
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +97,7 @@ public class Information extends AppCompatActivity {
         btnFM2 = (Button) findViewById(R.id.btnFM2);
         btnFP1 = (Button) findViewById(R.id.btnFP);
         btnFP2 = (Button) findViewById(R.id.btnFP2);
+        saveD = (Button) findViewById(R.id.btnsave);
 
     }
 
@@ -172,6 +174,19 @@ public class Information extends AppCompatActivity {
                 }
                 break;
         }
+    }
+
+    public void saveData(View view){
+        String teams = text1.getText().toString()+ " VS "+ text2.getText().toString();
+        String score = score1.getText().toString()+ " | "+ score2.getText().toString();
+        String assist = editAssist1.getText().toString()+" | "+editAssist2.getText().toString();
+        String fault = editFault1.getText().toString()+" | "+editFault2.getText().toString();
+        String rebound = editRebound1.getText().toString()+" | "+editRebound2.getText().toString();
+        myDB.insertData(teams, score, assist,fault,rebound);
+        if(myDB.insertData(teams, score, assist,fault,rebound) == true){
+            Toast.makeText(Information.this, "Data inserted successfully!",Toast.LENGTH_LONG).show();
+        } else
+            Toast.makeText(Information.this, "Data insertion failed!",Toast.LENGTH_LONG).show();
     }
 }
 
