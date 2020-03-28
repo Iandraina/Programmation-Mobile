@@ -187,6 +187,8 @@ public class Information extends AppCompatActivity {
             Toast.makeText(Information.this, "Data inserted successfully!",Toast.LENGTH_LONG).show();
         } else
             Toast.makeText(Information.this, "Data insertion failed!",Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
 
