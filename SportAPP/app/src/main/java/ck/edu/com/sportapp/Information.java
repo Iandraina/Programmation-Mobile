@@ -182,7 +182,7 @@ public class Information extends AppCompatActivity {
         String assist = editAssist1.getText().toString()+" | "+editAssist2.getText().toString();
         String fault = editFault1.getText().toString()+" | "+editFault2.getText().toString();
         String rebound = editRebound1.getText().toString()+" | "+editRebound2.getText().toString();
-        myDB.insertData(teams, score, assist,fault,rebound);
+        //myDB.insertData(teams, score, assist,fault,rebound);
         if(myDB.insertData(teams, score, assist,fault,rebound) == true){
             Toast.makeText(Information.this, "Data inserted successfully!",Toast.LENGTH_LONG).show();
         } else

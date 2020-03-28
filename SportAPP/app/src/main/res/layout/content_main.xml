@@ -79,10 +79,11 @@
                 android:id="@+id/stat"
                 android:layout_width="156dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="70dp"
                 android:layout_marginRight="70dp"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
+                android:onClick="seeStat"
                 android:text="See statistic" />
         </LinearLayout>
 
