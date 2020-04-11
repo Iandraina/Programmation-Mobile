@@ -14,14 +14,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
+    //Déclaration des variables
     Database myDB;
     Button stats, match;
     StringBuffer stringBuffer;
@@ -42,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Initialisation des variables
         match = (Button) findViewById(R.id.newMatch);
         stats = (Button) findViewById(R.id.stat);
         myDB = new Database(this);
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Commencer une activité (nouvel enregistrement de match)
     public void startNewMatch(){
         Intent i = new Intent(this, AccueilMatch.class);
         startActivity(i);
@@ -62,28 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
+    //regarder les statistiques (les informations sur les match déjà sauvegardé localement)
     public void seeStat (View view) {
         Cursor cursor = myDB.getAllData();
         if(cursor.getCount() == 0){

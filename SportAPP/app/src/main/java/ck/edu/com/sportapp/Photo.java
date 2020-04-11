@@ -26,7 +26,7 @@ public class Photo extends AppCompatActivity implements View.OnClickListener{
 
     ImageView imageView;
     Button snap;
-    final int REQUEST_IMAGE_CAPTURE = 1, REQUEST_IMAGE_GALLERY = 2;
+    final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,26 +42,22 @@ public class Photo extends AppCompatActivity implements View.OnClickListener{
         snap.setOnClickListener(this);
     }
 
+    //gestion du bouton photo sur l'interface utilisateur
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.snap :
-                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(i.resolveActivity(getPackageManager()) != null){
-                    startActivityForResult(i,REQUEST_IMAGE_CAPTURE);
-                }
-                break;
+        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(i.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(i,REQUEST_IMAGE_CAPTURE);
         }
     }
 
+    //permet de récupérer la photo prise et de l'afficher sur l'interface et l'espace dédié
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode == RESULT_OK) {
-            //if(requestCode == REQUEST_IMAGE_CAPTURE){
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 imageView.setImageBitmap(bitmap);
-            //}
         }
     }
 }

@@ -9,6 +9,8 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Information extends AppCompatActivity {
+    //Déclaration des variables
     Database myDB;
     int cptA1 = 0;
     int cptA2 = 0;
@@ -35,14 +38,6 @@ public class Information extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         myDB = new Database(this);
         photo = (Button) findViewById(R.id.photo);
         photo.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +73,13 @@ public class Information extends AppCompatActivity {
             text2.setText((String)savedInstanceState.getSerializable("team2"));
         }
 
+        //Initialisation des variables
         editAssist1 = (EditText) findViewById(R.id.editAssist);
         editAssist2 = (EditText) findViewById(R.id.editAssist2);
         editRebound1 = (EditText) findViewById(R.id.editRebound);
         editRebound2 = (EditText) findViewById(R.id.editRebound2);
         editFault1 = (EditText) findViewById(R.id.editFault);
         editFault2 = (EditText) findViewById(R.id.editFault2);
-
         btnAM1 = (Button) findViewById(R.id.btnAM);
         btnAM2 = (Button) findViewById(R.id.btnAM2);
         btnAP1 = (Button) findViewById(R.id.btnAP);
@@ -101,39 +96,42 @@ public class Information extends AppCompatActivity {
 
     }
 
+    //Fonction qui gère la localisation
     public void location() {
         Intent i = new Intent (Information.this, MapsActivity.class );
         startActivity(i);
     }
 
+    //Fonction qui gère l'appareil photo
     public void photoClick() {
         Intent i = new Intent(Information.this, Photo.class);
         startActivity(i);
     }
 
+    //Fonction qui gère le clique des boutons
     public void onClick(View view){
         switch (view.getId()) {
-            case R.id.btnAP:
+            case R.id.btnAP :
                 cptA1++;
                 editAssist1.setText(String.valueOf(cptA1));
                 break;
-            case R.id.btnAM:
+            case R.id.btnAM :
                 if(cptA1>=1){
                     cptA1--;
                     editAssist1.setText((String.valueOf(cptA1)));
                 }
                 break;
-            case R.id.btnAP2:
+            case R.id.btnAP2 :
                 cptA2++;
                 editAssist2.setText(String.valueOf(cptA2));
                 break;
-            case R.id.btnAM2:
+            case R.id.btnAM2 :
                 if(cptA2>=1){
                     cptA2--;
                     editAssist2.setText((String.valueOf(cptA2)));
                 }
                 break;
-            case R.id.btnRP:
+            case R.id.btnRP :
                 cptR1++;
                 editRebound1.setText(String.valueOf(cptR1));
                 break;
@@ -176,6 +174,7 @@ public class Information extends AppCompatActivity {
         }
     }
 
+    //Fonction qui permet de sauvegarder les données dans la base locale
     public void saveData(View view){
         String teams = text1.getText().toString()+ "   VS   "+ text2.getText().toString();
         String score = score1.getText().toString()+ "   |   "+ score2.getText().toString();
@@ -193,6 +192,37 @@ public class Information extends AppCompatActivity {
             Toast.makeText(Information.this, "No more local space available!",Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.accueil) {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+            this.finish();
+            return true;
+        }
+        else if(id == R.id.accueilMatch){
+            Intent i = new Intent(this, AccueilMatch.class);
+            startActivity(i);
+            this.finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 
