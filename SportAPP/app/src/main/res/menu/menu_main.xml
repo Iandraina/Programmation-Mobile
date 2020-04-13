@@ -12,5 +12,10 @@
         android:orderInCategory="100"
         android:title="Teams' names"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/info"
+        android:orderInCategory="100"
+        android:title="Match informations"
+        app:showAsAction="never" />
 
 </menu>

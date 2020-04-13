@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SportAPP</string>
+    <string name="action_settings">Paramètre</string>
+    <string name="begin">Commencer</string>
+    <string name="enter_team_1_s_name">Nom équipe 1...</string>
+    <string name="enter_team_2_s_name">Nom équipe 1...</string>
+    <string name="team_1">"Equipe 1 : "</string>
+    <string name="team_2">"Equipe 1 : "</string>
+    <string name="teams_name">Noms des équipes</string>
+    <string name="title_activity_accueil_match">AccueilMatch</string>
+    <string name="title_activity_information">Informations</string>
+    <string name="title_activity_maps">Carte</string>
+    <string name="title_activity_match">ActivitéMatch</string>
+    <string name="title_activity_photo">Photo</string>
+    <string name="new_match">Nouveau match</string>
+    <string name="see_statistic">Regarder les statistiques</string>
+    <string name="fault">fautes</string>
+    <string name="final_points">Score final</string>
+    <string name="location">Localisation</string>
+    <string name="save">Enregistrer</string>
+    <string name="take_a_photo">Prendre une photo</string>
+    <string name="take_a_picture">Prendre une photo</string>
+</resources>

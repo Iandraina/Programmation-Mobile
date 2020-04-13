@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,5 +97,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
         return adres;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.accueil) {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+            this.finish();
+            return true;
+        }
+        else if(id == R.id.accueilMatch){
+            Intent i = new Intent(this, AccueilMatch.class);
+            startActivity(i);
+            this.finish();
+            return true;
+        }
+        else if(id == R.id.info){
+            Intent i = new Intent(this, Information.class);
+            startActivity(i);
+            this.finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
